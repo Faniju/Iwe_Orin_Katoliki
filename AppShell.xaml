@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:YorubaCatholicHymn"
+       x:Class="YorubaCatholicHymn.AppShell"
+       FlyoutBehavior="Flyout"
+      >
+    <Shell.FlyoutHeader>
+        <Grid>
+            <!--<Image Source="bck.png" Aspect="Fill"/>-->
+            <StackLayout  BackgroundColor="Transparent">
+                <Label Text="Iwe Orin Katoliki"
+                   FontSize="28"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+                <Image Source="bck.png" Aspect="AspectFit"/>
+            </StackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+    <Shell.FlyoutFooter>
+        <Label Text="Copywrite | Fadeyi Julius"
+               BackgroundColor="AliceBlue"
+               HorizontalTextAlignment="Center"
+               Padding="0.10">
+            
+        </Label>
+    </Shell.FlyoutFooter>
+
+    <!-- Home -->
+    <FlyoutItem Title="Home" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <!-- Favorites -->
+    <FlyoutItem Title="Favorites" Icon="star.png">
+        <ShellContent ContentTemplate="{DataTemplate local:FavoritesPage}" />
+    </FlyoutItem>
+    <!-- Favorites -->
+    <FlyoutItem Title="Order Of Mass" Icon="order.png">
+        <ShellContent ContentTemplate="{DataTemplate local:OrderOfMassPage}" />
+    </FlyoutItem>
+    <!-- Parent FlyoutItem -->
+   
+
+
+</Shell> 

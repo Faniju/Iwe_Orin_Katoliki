@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YorubaCatholicHymn.MainPage"
+             Title="Iwe Orin Katoliki">
+
+    <!-- Toolbar items (icons in the navigation bar) -->
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*,Auto">
+            
+
+            <SearchBar Grid.Column="0"
+                       Placeholder="Search by number or title"
+                       TextChanged="OnSearchTextChanged" />
+
+            <!-- Favorites icon with count overlayed -->
+            <Grid Grid.Column="1" HeightRequest="36" WidthRequest="36">
+                <Image Source="{Binding FavoriteIcon}" HeightRequest="36" WidthRequest="36" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <!-- Single tap opens FavoritesPage -->
+                        <TapGestureRecognizer Command="{Binding OpenFavoritesCommand}" />
+
+                        <!-- Double tap triggers clear all favorites with confirmation -->
+                        <TapGestureRecognizer NumberOfTapsRequired="2"
+                                  Command="{Binding ClearAllFavoritesCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <!-- Badge count positioned at top-right of the image -->
+                <Frame BackgroundColor="Red" Padding="2" CornerRadius="10" HasShadow="False"
+                       HorizontalOptions="End" VerticalOptions="Start" HeightRequest="18" WidthRequest="18" IsClippedToBounds="True">
+                    <Label Text="{Binding FavoritesCount}" FontAttributes="Bold" FontSize="10" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
+            </Grid>
+        </Grid>
+    </Shell.TitleView>
+
+    <!-- Two-column grid with headers and scrollable lists -->
+    <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,*">
+
+        <!-- Category header -->
+        <Label Grid.Column="0" Grid.Row="0"
+               Text="Categories"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,5" />
+
+        <!-- Hymn header -->
+        <Label Grid.Column="1" Grid.Row="0"
+               Text="Hymns"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,5" />
+
+        <!-- Categories list -->
+        <CollectionView Grid.Column="0" Grid.Row="1"
+                        ItemsSource="{Binding Categories}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCategorySelected"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="3"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="Transparent" StrokeThickness="1" Padding="5" Margin="3">
+                        <Label Text="{Binding}" FontAttributes="Bold" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1"/>
+                                        <Setter Property="Background" Value="White"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="Background" Value="#EEE"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="Background" Value="LightYellow"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95"/>
+                                        <Setter Property="Background" Value="#DDD"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Hymn list -->
+        <CollectionView Grid.Column="1" Grid.Row="1"
+                        ItemsSource="{Binding FilteredHymns}"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="LightGray" StrokeThickness="1" Padding="10" Margin="5">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.HymnTappedCommand}" CommandParameter="{Binding}" />
+                        </Border.GestureRecognizers>
+                        <StackLayout>
+                            <Label Text="{Binding Number}" FontAttributes="Bold" FontSize="Large" TextColor="DarkRed" />
+                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="Medium" />
+
+                            <Label Text="{Binding Snippet}" FontSize="Small" TextColor="Gray" LineBreakMode="TailTruncation"
+                                                   MaxLines="1" FontAttributes="Italic"/>
+                                <Label Text="{Binding Author}" FontSize="Small" TextColor="DarkGreen" FontAttributes="Italic"
+                                                   HorizontalOptions="End"/>
+                            </StackLayout>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1"/>
+                                        <Setter Property="Background" Value="White"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="Background" Value="#EEE"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="Background" Value="LightYellow"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95"/>
+                                        <Setter Property="Background" Value="#DDD"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                    </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    
+</ContentPage>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YorubaCatholicHymn.HymnDetailPage"
+             Title="{Binding PageTitle}">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="10">
+
+            <!-- Hymn title -->
+            <Label Text="{Binding Title}" 
+                   FontAttributes="Bold" 
+                   FontSize="22" 
+                   TextColor="Purple"/>
+
+            <!-- Chorus (only visible if present) -->
+            <StackLayout IsVisible="{Binding HasChorus}" Spacing="0">
+                <Label Text="Egbe:" 
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       Margin="0,10,0,5"/>
+
+                <CollectionView ItemsSource="{Binding ChorusLines}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}"
+                       FontSize="20"
+                       TextColor="DarkBlue"
+                       Margin="30,0,0,5"
+                       HorizontalTextAlignment="Start"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <!-- Verses -->
+            <CollectionView ItemsSource="{Binding Verses}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="Auto,*" Margin="0,0,0,25">
+                            <!-- Verse number -->
+                            <Label Grid.Column="0"
+                                   Text="{Binding Number}"
+                                   FontAttributes="Bold"
+                                   FontSize="Small"
+                                   TextColor="DarkBlue"
+                                   VerticalOptions="Start"
+                                   Margin="0,0,10,0"/>
+
+                            <!-- Verse text block -->
+                            <StackLayout Grid.Column="1" Spacing="0">
+                                <!-- First line -->
+                                <Label Text="{Binding FirstLine}"
+                                       FontSize="20"
+                                       TextColor="Black"
+                                       Margin="0,0,0,5"/>
+
+                                <!-- Remaining lines -->
+                                <CollectionView ItemsSource="{Binding RemainingLines}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Text="{Binding .}"
+                                                   FontSize="20"
+                                                   TextColor="Black"
+                                                   Margin="0,0,0,5"/>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Author -->
+            <Label Text="{Binding Author}" 
+                   FontSize="12" 
+                   FontAttributes="Italic" 
+                   HorizontalOptions="End"
+                   TextColor="Gray"
+                   Margin="0,20,0,0"/>
+
+            <!-- Favorite button -->
+            <Button Text="{Binding FavoriteButtonText}"
+                    BackgroundColor="Purple"
+                    TextColor="White"
+                    Command="{Binding ToggleFavoriteCommand}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="YorubaCatholicHymn.csproj">
+    <BuildType Project="Release" />
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

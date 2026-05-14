@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:conv="clr-namespace:YorubaCatholicHymn.Converters"
+             x:Class="YorubaCatholicHymn.OrderOfMassPage"
+             Title="ETO ISIN E̩BỌ MIMỌ TI MISA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:FirstLineConverter x:Key="FirstLineConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <!-- Opening Rite -->
+            <Label Text="Ìbè̩rè̩ Ìsìn"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   TextColor="DarkRed"
+                   HorizontalTextAlignment="Center"/>
+
+            <Label Text="E̩ dìde. Àlùfáà àti àwọn onígbò̩wó̩ rè̩ yóò lọ sí ibi pè̩pè̩. Àlùfáà yóò sì fi ìbò̩ fún pè̩pè̩. Ìjọ yóò kọ Orin Ìwọlé."
+                   FontSize="18"
+                   TextColor="Red"
+                   FontAttributes="Italic"
+                   HorizontalTextAlignment="Justify"
+                   LineBreakMode="WordWrap" />
+
+            <!-- Sign of the Cross -->
+            <Label Text="Àmìn Àgbélébùú"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center" />
+            <Label HorizontalTextAlignment="Justify" LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Lórúkọ Baba "
+                  FontSize="18"
+                  FontAttributes="Bold"
+                  TextColor="Black" />
+                        <Span Text="✠ "
+                  FontSize="20"
+                  FontAttributes="Bold"
+                  TextColor="Red" />
+                        <Span Text="àti Ọmọ, àti Ẹmí Mímó̩. Àmín."
+                  FontSize="18"
+                  FontAttributes="Bold"
+                  TextColor="Black" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="Ijo:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Amin."
+                               FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Alufaa:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Oore-ò̩fé̩ Olúwa wa Jésù Krístì, ìfé̩ e̩ ti O̩ló̩run,
+àti ìdàpò̩s̩ò̩kan ti È̩mí Mímó̩, kí ó wà pè̩lúu gbogbo yín."
+                   LineBreakMode="WordWrap"
+                   HorizontalTextAlignment="Justify"
+                               FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Tàbí:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Kí oore-ò̩fé̩ àti àlàáfíà láti ò̩dò̩ O̩ló̩run Baba wa àti Olúwa Jésù Krístì wà pè̩lúu yin."
+                   LineBreakMode="WordWrap"
+                   HorizontalTextAlignment="Justify"
+                               FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Tàbí:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Kí Olúwa wà pè̩lúu yín."
+                               FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Ijo:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Kí Ó sì wà pè̩lú è̩míì re̩."
+                               FontAttributes="Bold" TextColor="Black"/>
+            
+
+            <!-- Confession -->
+            <StackLayout Padding="0" Spacing="10">
+                <Label Text="(Nihin Alufaa le s̩e alaye die̩ lori isin ti a fe̩ s̩e)"
+                           FontSize="16" HorizontalTextAlignment="Justify"
+FontAttributes="Italic"  TextColor="Red"/>
+                <Label Text="(Le̩hin alaye, Alufaa yo ke si ijo̩ lati kaanu é̩s̩è̩ wo̩n)"
+                           FontSize="16"
+FontAttributes="Italic" HorizontalTextAlignment="Justify"  TextColor="Red"/>
+                <!-- Header with toggle button -->
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                   
+                    <Label Text="IJÉ̩WÓ̩ É̩S̩È̩"
+                           FontSize="16"
+FontAttributes="Italic" Margin="100,10,0,0" VerticalTextAlignment="Center" TextColor="Red"/>
+
+                    <!-- Button cycles through 3 confessions -->
+                    <Button x:Name="ConfessionButton"
+                            Text="{Binding ConfessionButtonText}"
+                Command="{Binding ToggleConfessionCommand}"
+                FontFamily="Segoe MDL2 Assets"
+                            FontAttributes="Italic"
+                FontSize="16"
+                            Margin="20,0,0,0"
+                BackgroundColor="Transparent"
+                TextColor="Red"
+                VerticalOptions="Center" />
+
+                </StackLayout>
+                
+                
+
+                <Label Text="Alufaa:"
+FontAttributes="Italic" TextColor="Red"/>
+                <Label Text="È̩yin ará, e̩ jé̩ ká gbà pé e̩lé̩s̩è̩ ni wá, ká sì múrasílè̩ láti s̩e aye̩ye̩ ohun-ìjìnlè̩ mímó̩ yìí."
+                   LineBreakMode="WordWrap"
+                       HorizontalTextAlignment="Justify"
+                               FontAttributes="Bold" TextColor="Black"/>
+                <Grid>
+                <!-- Confession 1 -->
+                <StackLayout x:Name="Confession1Block"
+                 IsVisible="{Binding IsConfession1Visible}">
+
+                    <Label Text="Mo jé̩wó̩ fún O̩ló̩run Olódùmarè,
+àti fún è̩yin ará,
+pé mo ti dé̩s̩è̩ púpò̩,
+nípa ìrònú, nípa ò̩rò̩,
+nípa ìs̩e, àti nípa àìs̩e is̩é̩ mi,"
+
+               FontSize="18"
+                           HorizontalTextAlignment="Justify"
+               FontAttributes="Bold"
+               TextColor="Black"
+               LineBreakMode="WordWrap" />
+                    <Label Text="A óò fi o̩wo̩ lu oókan-àyà bí a ti ń wípé:"
+               FontAttributes="Italic"
+                           HorizontalTextAlignment="Justify"
+               TextColor="Red" />
+                    <Label Text="ìjè̩bi mi ni, ìjè̩bi mi ni, ìjè̩bi ńláǹlà mi ni. 
+Nítorí náà mo be̩ Màríà alábùkún-fún, láéláé wúndíá,
+gbogbo àwo̩n ángé̩lì
+àti àwo̩n ènìyàn mímó̩,
+àti è̩yin ará mi,
+kí e̩ gbàdúrà sí Olúwa O̩ló̩run wa fún mi.
+"
+
+               FontSize="18"
+               FontAttributes="Bold"
+                           HorizontalTextAlignment="Justify"
+               TextColor="Black"
+               LineBreakMode="WordWrap" />
+                    <Label Text="The absolution by the Priest follows:"
+FontAttributes="Italic"
+TextColor="Red" />
+                    <Label Text="Kí O̩ló̩run Olódùmarè s̩àánú fún wa, kí Ó dari è̩s̩è̩ wa jì wá, kí Ó sì mú wa dé ìyè àìnípè̩kun."
+               FontSize="18"
+               FontAttributes="None"
+               TextColor="Black"
+                           HorizontalTextAlignment="Justify"
+               LineBreakMode="WordWrap" />
+                    <Label Text="Àmín."
+FontSize="18"
+FontAttributes="Bold"
+TextColor="Black"
+LineBreakMode="WordWrap" />
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="V:"
+                                               Grid.Column="0"
+HorizontalOptions="Start"
+VerticalOptions="Center"
+FontAttributes="Italic"
+TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa."
+                                               Grid.Column="1"
+                    Margin="5"
+HorizontalOptions="End"
+VerticalOptions="StartAndExpand"
+               FontSize="18"
+               FontAttributes="None"
+               TextColor="Black"
+               LineBreakMode="WordWrap" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="R:"
+                                               Grid.Column="0"
+HorizontalOptions="Start"
+VerticalOptions="Center"
+FontAttributes="Italic"
+TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa."
+                                               Grid.Column="1"
+                    Margin="5"
+HorizontalOptions="End"
+VerticalOptions="StartAndExpand"
+FontSize="18"
+FontAttributes="Bold"
+TextColor="Black"
+LineBreakMode="WordWrap" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="V:"
+                                               Grid.Column="0"
+HorizontalOptions="Start"
+VerticalOptions="Center"
+FontAttributes="Italic"
+TextColor="Red" />
+                        <Label Text="Krístì s̩àánú fún wa."
+                                               Grid.Column="1"
+                    Margin="5"
+HorizontalOptions="End"
+VerticalOptions="StartAndExpand"
+               FontSize="18"
+               FontAttributes="None"
+               TextColor="Black"
+               LineBreakMode="WordWrap" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="R:"
+                               Grid.Column="0"
+           HorizontalOptions="Start"
+           VerticalOptions="Center"
+            FontAttributes="Italic"
+            TextColor="Red" />
+                        <Label Text="Krístì s̩àánú fún wa."
+                               Grid.Column="1"
+                               Margin="5"
+           HorizontalOptions="End"
+           VerticalOptions="StartAndExpand"
+FontSize="18"
+FontAttributes="Bold"
+TextColor="Black"
+LineBreakMode="WordWrap" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="V:"
+                                               Grid.Column="0"
+HorizontalOptions="Start"
+VerticalOptions="Center"
+FontAttributes="Italic"
+TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa."
+                                               Grid.Column="1"
+                    Margin="5"
+HorizontalOptions="End"
+VerticalOptions="StartAndExpand"
+               FontSize="18"
+               FontAttributes="None"
+               TextColor="Black"
+               LineBreakMode="WordWrap" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,auto">
+                        <Label Text="R:"
+                                               Grid.Column="0"
+HorizontalOptions="Start"
+VerticalOptions="Center"
+FontAttributes="Italic"
+TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa."
+                                               Grid.Column="1"
+                    Margin="5"
+HorizontalOptions="End"
+VerticalOptions="StartAndExpand"
+FontSize="18"
+FontAttributes="Bold"
+TextColor="Black"
+LineBreakMode="WordWrap" />
+                    </Grid>
+                </StackLayout>
+
+                <!-- Confession 2 -->
+                <StackLayout x:Name="Confession2Block"
+             IsVisible="{Binding IsConfession2Visible}"
+             Padding="0"
+             Margin="0"
+             Spacing="2">
+
+                    <Label Text="S̩àánú fún wá, Olúwa."
+           FontSize="18"
+           TextColor="Black" />
+
+                    <Label Text="Nítorí àwá ti s̩è̩ sí O̩."
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+                    <Label Text="Fi àánú Re̩ hàn wá Olúwa."
+           FontSize="18"
+           TextColor="Black" />
+
+                    <Label Text="Kí O sì fun wa ní igbàlà Re̩."
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+                    <Label Text="The absolution by the Priest follows:"
+           FontAttributes="Italic"
+           TextColor="Red" />
+
+                    <Label Text="Kí O̩ló̩run Olódùmarè s̩àánú fún wa, kí Ó dari è̩s̩è̩ wa jì wá, kí Ó sì mú wa dé ìyè àìnípè̩kun."
+                           LineBreakMode="WordWrap"
+                           HorizontalTextAlignment="Justify"
+           FontSize="18"
+           TextColor="Black" />
+
+                    <Label Text="Àmín."
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+                    <!-- Versicle/Response pairs -->
+                    <Grid ColumnDefinitions="Auto, Auto" >
+                        <Label Text="V:" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa." FontSize="18" Grid.Column="1" Margin="5"  TextColor="Black" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto, *" Margin="0" Padding="0">
+                        <Label Text="R:" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa." FontSize="18" FontAttributes="Bold" Grid.Column="1" Margin="5" TextColor="Black" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto, *" Margin="0" Padding="0">
+                        <Label Text="V:" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Red" />
+                        <Label Text="Krístì s̩àánú fún wa." FontSize="18" Grid.Column="1" Margin="5" TextColor="Black" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto, *" Margin="0" Padding="0">
+                        <Label Text="R:" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Red" />
+                        <Label Text="Krístì s̩àánú fún wa." FontSize="18" FontAttributes="Bold" Grid.Column="1" Margin="5" TextColor="Black" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto, *" Margin="0" Padding="0">
+                        <Label Text="V:" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa." FontSize="18" Grid.Column="1" Margin="5" TextColor="Black" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto, *" Margin="0" Padding="0">
+                        <Label Text="R:" FontAttributes="Italic" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Red" />
+                        <Label Text="Olúwa s̩àánú fún wa." FontSize="18" FontAttributes="Bold"  Grid.Column="1" Margin="5" TextColor="Black" />
+                    </Grid>
+                </StackLayout>
+                <!-- Confession 3 -->
+                <StackLayout x:Name="Confession3Block"
+             IsVisible="{Binding IsConfession3Visible}"
+             Padding="0"
+             Margin="0"
+             Spacing="2">
+
+                    <Label Text="The Priest or another minister says invocations naming the gracious works of the Lord to which he invites the people to respond, as in the example below:"
+                            FontSize="18"
+                            LineBreakMode="WordWrap"
+                           HorizontalTextAlignment="Justify"
+                            FontAttributes="Italic"
+                            TextColor="Red" />
+
+                    <Label Text="A rán O̩ láti wo àwo̩n oníròbànújé̩ o̩kàn sàn Olúwa s̩àánú fún wa."
+                            FontSize="18"
+                           LineBreakMode="WordWrap" HorizontalTextAlignment="Justify"
+                         TextColor="Black" />
+
+                    <Label Text="Olúwa s̩àánú fún wa."
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black" />
+
+                    <Label Text="Ìwo̩ wá láti pe àwo̩n e̩lé̩s̩è̩, Krístì s̩àánú fún wa."
+                        FontSize="18"
+                        LineBreakMode="WordWrap" HorizontalTextAlignment="Justify"
+                        TextColor="Black" />
+
+                    <Label Text="Krístì s̩àánú fún wa."
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+                    <Label Text="Ìwo̩ jókòó ló̩wó̩ ò̩tún un Baba láti bè̩bè̩ fún wa, Olúwa s̩àánú fún wa."
+                    FontSize="18"
+                    LineBreakMode="WordWrap" HorizontalTextAlignment="Justify"
+                    TextColor="Black" />
+
+                    <Label Text="Olúwa s̩àánú fún wa."
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+                    <Label Text="The absolution by the Priest follows:"
+           FontAttributes="Italic"
+           TextColor="Red" />
+
+                    <Label Text="Kí O̩ló̩run Olódùmarè s̩àánú fún wa, kí Ó dari è̩s̩è̩ wa jì wá, kí Ó sì mú wa dé ìyè àìnípè̩kun."
+                     FontSize="18"
+                    LineBreakMode="WordWrap" HorizontalTextAlignment="Justify"
+                    TextColor="Black" />
+
+                    <Label Text="Àmín."
+           FontSize="18"
+           FontAttributes="Bold"
+           TextColor="Black" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+            <Label Text="_________"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+HorizontalTextAlignment="Center"
+HorizontalOptions="Center" />
+
+            <!-- Gloria -->
+            <StackLayout Padding="0" Spacing="0">
+                <!-- Toggle button with chevron icon -->
+                <Button Text="{Binding GloriaButtonIcon}"
+                Command="{Binding ToggleGloriaCommand}"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="16"
+                BackgroundColor="Transparent"
+                TextColor="Red"
+                FontAttributes="Italic"
+                HorizontalOptions="End"
+                 />
+                <Label Text="Ogo"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="Purple"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center" />                                  
+                   <!-- Gloria text embedded directly -->
+                <Label Text="Ògo ni fún O̩ló̩run lókè ò̩run,
+àti ní ayé,
+àlááfíà fún àwo̩n ènìyàn tó ní ìfé̩ inú rere.
+Àwa ń yìn Ó̩,
+a ń fi ìbùkún fún O̩,
+a ń foríbalè̩ fún O̩,
+a ń yìn Ó̩ lógo, a ń dúpé̩ fún O̩ nítorí ògo ńlá Re̩.
+Olúwa O̩ló̩run, O̩ba ò̩run,
+O̩ló̩run Baba Olódùmarè,
+Olúwa Jésù Krístì,
+O̩mo̩ bíbí re̩ kans̩os̩o,
+Olúwa O̩ló̩run,
+Ò̩dó̩-Àgùntàn O̩ló̩run,
+O̩mo̩ ti Baba.
+Ìwo̩ tó ń kó è̩s̩è̩ ayé lo̩, s̩àánú fún wa.
+Ìwo̩ tó ń kó è̩s̩è̩ ayé lo̩, gba àdúrà wa.
+Ìwo̩ tó jókòó ló̩wó̩ ò̩tún Baba, s̩àánú fún wa.
+Nítorí Ìwo̩ nìkan ni mímó̩,
+Ìwo̩ nìkan ni Olúwa,
+Ìwo̩ Jésù Krístì nìkan ló ga jùlo̩,
+pè̩lú È̩mí Mímó̩,
+nínú ògo O̩ló̩run Baba.
+Àmín."
+                       IsVisible="{Binding IsGloriaVisible}"
+                       LineBreakMode="WordWrap"
+                       TextColor="Black"    
+                       HorizontalTextAlignment="Justify"
+                       FontSize="18" />
+                <!-- Seasonal message -->
+                <Label Text="No Gloria in Advent and Lenten season"
+           IsVisible="{Binding IsGloriaVisible, Converter={StaticResource InverseBoolConverter}}"
+           FontSize="16"
+           FontAttributes="Italic"
+           TextColor="Red"
+           HorizontalTextAlignment="Justify"
+           HorizontalOptions="Center"
+            />
+            </StackLayout>
+            <Label Text="_________"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+HorizontalTextAlignment="Center" />
+            <Label Text="Alufaa:"
+       FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="E je ki a gbadura"
+                               FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Gbogbo ijo gbadura ni idakeje pule Alufaa fun igba di e. Nigba na ni Alufaa yo gbadura ti gbogbo Ijo yio si dahun wipe:"
+FontAttributes="Italic" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Red"/>
+            <Label Text="Àmín."
+           FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="_________"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+HorizontalTextAlignment="Center" />
+            <!-- Readings -->
+            <Label Text="Kíkà Ò̩rò̩ Ọlọ́run"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"
+                    />
+
+            <Label Text="E̩ jókòó:"
+                               FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="È̩kó̩ Kinni"
+FontAttributes="Bold" TextColor="DarkGreen"/>
+            <Label Text="È̩kó̩ lati nu Iwe....."
+                               FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Èyí ni Ò̩rò̩ Olúwa"
+                               FontAttributes="None" TextColor="Black"/>
+            <Label Text="Gbogbo Ijo:"
+       FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="O̩pé̩ ni fún O̩ló̩run."
+       FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Psalmu"
+FontAttributes="Bold" TextColor="DarkGreen"/>
+            <Label Text="Olukeko yi o ka Psalmu Tabi Ki Akorin ko Psalmu..."
+                        FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="È̩kó̩ Keji"
+FontAttributes="Bold" TextColor="DarkGreen"/>
+            <Label Text="È̩kó̩ lati nu Iwe....."
+                        FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="Èyí ni Ò̩rò̩ Olúwa"
+                        FontAttributes="None" TextColor="Black"/>
+            <Label Text="Gbogbo Ijo:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label Text="O̩pé̩ ni fún O̩ló̩run."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Ìyìnrere"
+FontAttributes="Bold" TextColor="DarkGreen"/>
+            <Label Text="Alufaa yo gbadura ni dakeje bayii:"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label HorizontalTextAlignment="Justify" LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Baba, jò̩wó̩ bùkún fún mi. Kí Olúwa wà ní o̩kàn re̩ àti ní ètè re̩ kí o ba lè kéde Ìyìnrere Rè̩ bí ó ti tó̩ àti bí ó ti ye̩, ní orúko̩ ti Baba," FontAttributes="None" TextColor="Black"/>
+                        <Span Text=" ✠" FontAttributes="Bold" FontSize="18" TextColor="red"/>
+                        <Span Text=" àti ti O̩mo̩ àti ti È̩mí mímó̩. Àmín." FontAttributes="None" TextColor="Black"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="We̩ o̩kàn mi àti ètè mi mó̩, O̩ló̩run Olódùmarè, kí èmi ba lè kéde Ìyìnrere mímó̩ ò̩ Re̩ bí ó ti ye̩.
+                                            "
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Kí Olúwa wà pè̩lúu yín."
+FontAttributes="None" TextColor="Black"/>
+            <Label Text="Kí Ó sì wà pè̩lú è̩mí re̩."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Ìdáhùn sí Ìyìnrere"
+FontAttributes="Italic" TextColor="Red"/>
+            <Label HorizontalTextAlignment="Justify" LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="È̩kó̩ kíkà láti inú Ìyìnrere mímó̩ láti o̩wó̩  " FontAttributes="None" TextColor="Black"/>
+                        <Span Text="N." FontAttributes="Bold" TextColor="red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="Ògo ni fún O̩, Olúwa."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Èyí ni Ìyìnrere Olúwa."
+FontAttributes="None" TextColor="Black"/>
+            <Label Text="Ìyìn ni fún O̩, Krístì."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Nípa àwo̩n ò̩rò̩ Ìyìnrere yìí, ká rí ìwè̩nùmó̩ àwo̩n è̩s̩è̩ wa."
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="E̩ jókòó lé̩yin tí a bá ti ka Ìyìnrere tán."
+FontAttributes="Italic" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Red"/>
+            <Label Text="Iwaasu"
+FontAttributes="Bold" TextColor="DarkGreen"/>
+            <Label Text="Lehin Iwaasu ao se asaro lori awon eko fun igba die. Gbogbo ijo yoo si dide duro"
+FontAttributes="Italic"  LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Red"/>
+            <StackLayout Padding="10" Spacing="5">
+
+                <!-- Header with toggle button -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Button Text="{Binding IBelieveButtonText}"
+                Command="{Binding ToggleIBelieveCommand}"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="16"
+                BackgroundColor="Transparent"
+                TextColor="Red"
+                VerticalOptions="Center" />
+                </StackLayout>
+
+                <!-- Container -->
+                <Grid>
+                    <!-- I Believe 1 -->
+                    <StackLayout IsVisible="{Binding IsIBelieve1Visible}">
+                        <Label Text="Ìjé̩wó̩ ìgbàgbó̩ (ti Nìsíà)"
+FontAttributes="Italic" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" TextColor="Red"/>
+                        <Label Text="Mo gba O̩ló̩run kans̩os̩o gbó̩,
+Baba Olódùmarè,
+E̩lé̩dàá ò̩run òun ayé,
+àti ohun gbogbo tí a ń rí,
+àti èyí tí a kò rí. 
+Mo gba Olúwa kan s̩os̩o gbó̩,
+Jésù Krístì,
+E̩nìkan s̩os̩o tíí s̩e O̩mo̩ bíbí O̩ló̩run,
+E̩ni tí Baba ti bí s̩íwájú ìbè̩rè̩ ayé gbogbo
+O̩ló̩run láti inú O̩ló̩run wá,
+Ìmó̩lè̩ láti inú Ìmó̩lè̩.
+O̩ló̩run tòótó̩ láti inú O̩ló̩run tòótó̩.
+E̩ni tí a bí, s̩ùgbó̩n tí a kò dá,
+tí Ó jé̩ ò̩kan náà pè̩lúu Baba,
+tí a sì ti ipa Rè̩ dá ohun gbogbo.
+E̩ni tí Ó torí àwa ènìyàn
+àti ìgbàlà wa sò̩kalè̩ láti ò̩run wá,
+"
+                        FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+                        <Label Text="(a óò te̩ríba) "
+                        FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+                        <Label Text="tí Ó gba ara ènìyàn láti inú Màríà Wúndíá nípa È̩mí Mímó̩, tí Ó sì di ènìyàn."
+FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+                        <Label Text="(a óò gbórí sókè)"
+FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+                        <Label Text="A kàn án mó̩ àgbélébùú nítorí i wa
+lábé̩ às̩e̩ Pó̩ńtíù Pílátù,
+Ó jìyà ikú, a sì sin ín.
+Ní o̩jó̩ ke̩ta Ó jíǹde gé̩gé̩ bí Ìwé Mímó̩ ti wí,
+Ó gòkè re ò̩run,
+Ó si jókòó ló̩wó̩ ò̩tún Baba.
+Yóò tún padà pè̩lú ògo,
+láti dá àwo̩n alààyè àti àwo̩n òkú lé̩jó̩,
+ìjo̩ba Rè̩ kì yóò sì ní ìpè̩kun. 
+Mo gba È̩mí Mímó̩ gbó̩.
+Olúwa àti olùfúnni ní ìyè,
+E̩ni tí Ó ti ò̩dò̩ Baba àti O̩mo̩ jáde wá,
+tí ó jé̩ pé Òun pè̩lú Baba àti O̩mo̩
+ni a ń fi ìbo̩ fún, tí a sì ń yìn ní ògo.
+E̩ni tí Ó ti e̩nu àwo̩n wòlíì sò̩rò̩. 
+Mo gba ìjo̩ O̩ló̩run kan s̩os̩o gbó̩,
+tí ó jé̩ Mímó̩, Kátólíkì àti Àpóstólíkì.
+Mo jé̩wó̩ ìbatisí kans̩os̩o fún ìmúkúrò è̩s̩è̩.
+Mo sì ń retí àjíǹde àwo̩n òkú,
+àti ìyè ayé tí ń bò̩ wá.Àmín."
+FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+                        <Label Text="Àmín."
+FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+                    </StackLayout>
+
+                    <!-- I Believe 2 -->
+                    <StackLayout IsVisible="{Binding IsIBelieve2Visible}">
+                        <Label Text="Ìjé̩wó̩ ìgbàgbó̩ (ti Àwo̩n Àpóstólì)"
+FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <Label Text="Mo gba O̩ló̩run gbó̩, Baba Olódùmarè, E̩lé̩dàá ò̩run òun ayé; àti Jésù Krístì̀, O̩mo̩ Rè̩ kans̩os̩o, Olúwa wa."
+                        FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+                        <Label Text="(a óò te̩ríba) "
+                        FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+                        <Label Text="E̩ni tí a lóyùn Rè̩ nípa È̩mí Mímó̩, tí a bí nínú Màríà Wúndíá,"
+FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+                        <Label Text="(a óò gbórí sókè)"
+FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+                        <Label Text="tí Ó jìyà lábé̩ àsè̩ Pó̩ntù Pilatù;
+E̩ni tí a kàn mó̩ àgbélébùú,
+E̩ni tí Ó kú, tí a sì sin,
+Ó sò̩kalè̩ re ipò òkú,
+ní o̩jó̩ ke̩ta Ó jíǹde kúrò nínú òkú,
+Ó gòkè re ò̩run,
+Ó si jókòó ló̩wó̩ ò̩tún O̩ló̩run Baba Olódùmarè;
+níbè̩ ni yóò ti padà wá
+láti dá àwo̩n alààyè àti àwo̩n òkú lé̩jó̩.
+Mo gba È̩mí Mímó̩ gbó̩;
+ìjo̩ Kátólíkì Mímó̩,
+ìdàpò̩s̩ò̩kan àwo̩n ènìyàn mímó̩,
+ìdáríjì è̩s̩è̩,
+àjíǹde ara,
+àti ìyè tí kò ní ìpè̩kun."
+FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+                        <Label Text="Àmín."
+FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+                    </StackLayout>
+            
+
+                    <!-- Hidden state message -->
+                    <Label Text=""
+               IsVisible="{Binding IsIBelieveHidden}"
+               FontSize="16"
+               FontAttributes="Italic"
+               TextColor="Red"
+               HorizontalOptions="Center" />
+                </Grid>
+            </StackLayout>
+            <Label Text="(Lehin eyi ni a o ka adura Ebe)."
+FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="IFITORE"
+FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="Black"/>
+            <Label Text="(Ni ipari isin Oro Oluwa a o ko Orin Ifitore. Awon ti a yan yoo si gbe awon ebun ti ao fi rubo wa si ibi pepe. Alufaa yoo si gba won lowo won)."
+FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="_________"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+HorizontalOptions="Center" />
+            <Label Text="Ìsìn Ara Olúwa"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+HorizontalTextAlignment="Center" />
+            <Label Text="(Alufaa yoo duro leba pepe, yoo gbe buredi soke ni owo re, pelu adura bayi:)."
+FontAttributes="Italic" LineBreakMode="WordWrap" TextColor="Red"/>
+            <!-- Eucharist -->
+            <Label Text="Olùbùkún ni Ìwo̩ Olúwa O̩ló̩run gbogbo è̩dá, 
+nítorí láti inú oore Re̩ ni a ti rí búré̩dì tí a fi ń rúbo̩ sí O̩ gbà, 
+èyí tí í s̩e èso ilè̩ àti is̩é̩ o̩wó̩ ènìyàn, 
+yóò di oúnje̩ ìyè fún wa.
+"
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Ìbùkún ni fun O̩ló̩run títí láé."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Nípa ohun-ìjìnlè̩ ti omi àti wáìnì yìí, jé̩ ká le jé̩ alábàápín nínú ìwà O̩ló̩run\nE̩ni tí Ó re̩ ara Rè̩ sílè̩ láti pín nínú ìwà ènìyàn wa.
+Olùbùkún ni Ìwo̩ Olúwa O̩ló̩run gbogbo è̩dá, 
+nítorí láti inúrere Re̩ ni a ti rí wáìnì tí a fi ń rúbo̩ sí O̩ gbà, 
+èyí tí í s̩e èso àjàrà àti is̩é̩ o̩wó̩ ènìyàn, 
+yóò di ohun mímu ti è̩mí fún wa.
+"
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Ìbùkún ni fun O̩ló̩run títí láé."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Pè̩lú è̩mí ìrè̩lè̩ àti o̩kàn ìkáàánú, 
+jé̩ ká lè jé̩ àté̩wó̩gbà ló̩dò̩ Re̩, Olúwa 
+kí àwo̩n o̩re̩ wa ní o̩jó̩ òní bá ojúrere Re̩ pàdé Olúwa O̩ló̩run.
+Wè̩ mí mó̩ Oluwa kuró nínú gbogbo è̩gbin mi, 
+kí O sì wè̩ mí mó̩ kúrò nínú è̩s̩è̩ mi.
+È̩yin ará, 
+e̩ gbàdúrà kí e̩bo̩ mi àti tiyín 
+lè jé̩ àté̩wó̩gbà ló̩dò̩ O̩ló̩run Baba Olódùmarè.
+"
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Kí Olúwa gba e̩bo̩ náà ní o̩wó̩ ò̩ re̩, 
+fún ìyìn àti ògo orúko̩ Rè̩, 
+fún àǹfàní àwa fúnra wa 
+àti fún àǹfàní gbogbo ìjó̩ mímó̩ o̩ Rè̩. 
+Àmín.
+"
+FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+
+            <!-- Eucharistic Prayer -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Image Source="sort.png"
+           HeightRequest="20" WidthRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleEucharistCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Label Text="ÀDÚRÀ YUKARISTÍ"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   TextColor="DarkRed"
+                   HorizontalTextAlignment="Center" />
+            <Label Text="Kí Olúwa wà pè̩lúu yín."
+FontAttributes="None" TextColor="Black"/>
+            <Label Text="Kí Ó sì wà pè̩lú è̩mí re̩."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="E̩ gbé o̩kàn yín sókè."
+FontAttributes="None" TextColor="Black"/>
+            <Label Text="A gbé wo̩n sókè sí Olúwa."
+FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="E̩ jé̩ ká dúpé̩ ló̩wó̩ Olúwa O̩ló̩run wa."
+FontAttributes="None" TextColor="Black"/>
+            <Label Text="Ó ye̩ bé̩è̩, ó sì tó̩."
+FontAttributes="Bold" TextColor="Black"/>
+
+            <!-- Preface -->
+            <StackLayout IsVisible="{Binding IsPrefaceSectionVisible}">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                    <Image Source="sort.png"
+                           HeightRequest="20" WidthRequest="20"
+                           IsVisible="{Binding IsPrefaceIconVisible}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TogglePrefaceCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <Label Text="{Binding EffectivePreface.Title}" TextColor="Red" FontSize="14" HorizontalTextAlignment="Center" FontAttributes="Italic" />
+                <Label Text="{Binding EffectivePreface.Comment}" FontAttributes="Italic" HorizontalTextAlignment="Justify" TextColor="Red" IsVisible="{Binding EffectivePreface.Comment}" />
+                <Label HorizontalTextAlignment="Justify" LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <Binding Path="EffectivePreface.Text" Converter="{StaticResource PrayerTextFormatterConverter}" />
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <!--same for all-->
+            <Label Text="Lé̩yin tí Àlùfáà bá ti parí Orin Ìyìn a óò kà tàbí ko̩:" TextColor="Red" HorizontalTextAlignment="Justify" FontAttributes="Italic" />
+            <Label Text="Mímó̩, mímó̩, mímó̩ 
+Olúwa O̩ló̩run àwo̩n o̩mo̩ ogun 
+O̩run òun ayé kún fún ògo Re̩ 
+Hòsánà lókè ò̩run. 
+Alábùkún-fún ni E̩ni náà tí ń bò̩ lórúko̩ Olúwa. 
+Hòsánà lókè ò̩run
+" FontAttributes="Italic" HorizontalTextAlignment="Justify" TextColor="Black"  />
+            <Label Text="E̩ kúnlè̩." HorizontalTextAlignment="Justify" FontAttributes="Italic" TextColor="Red" LineBreakMode="WordWrap" />
+            <!-- Àdúrà Yukaristí -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Image Source="sort.png"
+                       HeightRequest="20" WidthRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleEucharistCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Label Text="{Binding SelectedPrayer.Title}" LineBreakMode="WordWrap"       
+                   IsVisible="{Binding SelectedPrayer.Title, Converter={StaticResource PrayerTextFormatterConverter}}" FontAttributes="Italic" FontSize="14" HorizontalTextAlignment="Center" TextColor="Red"/>
+            <Label Text="{Binding SelectedPrayer.Comment}" LineBreakMode="WordWrap"       
+                   IsVisible="{Binding SelectedPrayer.Comment, Converter={StaticResource PrayerTextFormatterConverter}}" FontAttributes="Italic" HorizontalTextAlignment="Justify" TextColor="Red"/>
+
+
+            <Label LineBreakMode="WordWrap" >
+                <Label.FormattedText>
+                    <Binding Path="SelectedPrayer.Text"  Converter="{StaticResource PrayerTextFormatterConverter}" />
+                </Label.FormattedText>
+            </Label>
+
+           
+
+            <!-- Communicantes (only for Eucharistic Prayer I) -->
+            <StackLayout IsVisible="{Binding IsCommunicantesSectionVisible}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand"
+                         IsVisible="{Binding IsCommunicantesSectionVisible}">
+                <!--<Label Text="Communicantes"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       TextColor="DarkGreen" />-->
+                <Image Source="sort.png"
+                       HeightRequest="20" WidthRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleCommunicantesCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Label Text="{Binding SelectedCommunicantes.Comment}"
+                   IsVisible="{Binding SelectedCommunicantes, Converter={StaticResource NullToBoolConverter}}"
+                   FontAttributes="Italic" TextColor="Red"/>
+
+            <Label 
+                   LineBreakMode="WordWrap"
+                   IsVisible="{Binding SelectedCommunicantes, Converter={StaticResource NullToBoolConverter}}">
+                <Label.FormattedText>
+                    <Binding Path="SelectedCommunicantes.Text" Converter="{StaticResource PrayerTextFormatterConverter}" />
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+        <Label Text="_________"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+Margin="120,10,0,0" />
+            <!-- Communion Rite -->
+            <Label Text="Ètò Ara Olúwa"
+         FontAttributes="None"
+         FontSize="20"
+         TextColor="Black"
+         Margin="100,10,0,0" />
+            <Label Text="Àdúrà Olúwa"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Black"
+Margin="110,10,0,0" />
+            <Label Text="Ní títè̩lé ìlànà ti ìgbàlà àti nípa è̩kó̩ àtò̩runwá tí Ó kó̩ wa a fi ìgboyà wípé:"
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Baba wa tí ń be̩ ní ò̩run 
+ká bò̩wò̩ fún orúko̩ ò̩ Re̩. 
+Kí ìjo̩ba Re̩ dé. 
+Ìfé̩ tìre̩ ni ká s̩e láyé 
+bí wó̩n ti ń s̩e ló̩run. 
+Fún wa lóúnje̩ òòjó̩ wa lónìí. 
+Dari è̩s̩è̩ wa jì wá, 
+bí a ti ń dárí è̩s̩è̩ jì àwo̩n tó s̩e wá. 
+Má fà wá sínú ìdánwò 
+s̩ùgbó̩n gbà wá kúrò nínú ibi.
+"
+FontAttributes="Bold" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Àdúrà Olúwa"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Black"
+Margin="110,10,0,0" />
+            <Label Text="Olúwa, àwa ń bè̩ Ó̩, gbà wá kúrò nínú gbogbo ibi.
+Ní inú rere Re̩ fún wa ní àlàáfíà ní àsìkò wa.
+Pé nípa ìrànló̩wó̩ àánú Re̩
+ká lè máa wà ní òmìnira kúrò nínú è̩s̩è̩
+àti ìpamó̩ kúró nínú gbogbo ìdààmú
+gé̩gé̩ bí a ti ń fi ìrètí àti ayò̩
+dúró de wíwá Olùgbàlà wa Jésù Krístì.
+"
+FontAttributes="None" LineBreakMode="WordWrap" HorizontalTextAlignment="Justify" TextColor="Black"/>
+            <Label Text="Nítorí ìjo̩ba ni tìre̩, agbára ni tìre̩, ògo ni tìre̩, láéláé. Àmín." HorizontalTextAlignment="Justify"
+FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Olúwa Jésù Krístì, Ìwo̩ tí o wí fún àwo̩n Àpóstólì Re̩ pé àlàáfíà ni mo fi sílè̩ fún un yín, àlàáfíà mi ni mo fifún un yín. Má s̩e wo àwo̩n è̩s̩è̩ wa, bí ko s̩e ìgbàgbó̩ ìjo̩ Re̩, kí O sì fún un ní àlàáfíà àti ìs̩ò̩kan gé̩gé̩ bí ìfé̩ è̩ Re̩ Ìwo̩ tí O wà tí O sì ń jo̩ba láé àti láéláé."
+FontAttributes="None" HorizontalTextAlignment="Justify" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Àmín."
+FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Kí Alàáfíà Olúwa wà pè̩lúu yín nígbà gbogbo."
+                   FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Kí Ó sì wà pè̩lú è̩mí re̩."
+FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="E̩ kí ara yín pè̩lú àlàáfíà."
+                   FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="A óò kí ara wa pè̩lú àlááfíà Krístì."
+FontAttributes="None" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="Gígé Búré̩dì"
+       FontAttributes="Bold"
+       FontSize="20"
+       TextColor="Black"
+       Margin="100,10,0,0" />
+            <Label Text="Kí ìdàpò̩ Ara àti È̩jè̩ Olúwa wa Jésù Kristì, mú wa ye̩ fún ìyè àìnípè̩kun."
+                 HorizontalTextAlignment="Justify"  FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Nígbà tí Àlùfáà bá ń gé Búré̩dì, a óò kà tàbí ko̩:"
+FontAttributes="None" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="Ò̩dó̩ àgùtàn O̩ló̩run, Ìwo̩ E̩ni tí Ó ń kó è̩s̩è̩ ayé lo̩," FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+    <Label Text="S̩àánú fún wa." FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+<Label Text="Ò̩dó̩ àgùtàn O̩ló̩run, Ìwo̩ E̩ni tí Ó ń kó è̩s̩è̩ ayé lo̩," FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+    <Label Text="S̩àánú fún wa." FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+<Label Text="Ò̩dó̩ àgùtàn O̩ló̩run, Ìwo̩ E̩ni tí Ó ń kó è̩s̩è̩ ayé lo̩." FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+   <Label Text=" Fún wa ní àlàáfíà." FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Ìpè sí gbígba Ara Olúwa"
+       FontAttributes="Bold"
+       FontSize="20"
+       TextColor="Black"
+       Margin="50,10,0,0" />
+            <Label Text="Olúwa Jésù Krístì, O̩mo̩ O̩ló̩run alààyè, tí O ti ipasè̩ ìfe̩ e̩ Baba àti is̩é̩ e̩ ti È̩mí Mímó̩ fún aráyé ní ìyè nípa ikú u Re̩ nípa Ara àti È̩jè̩ mímó̩ jùlo̩ ò̩ Re̩ yìí gbà mí kúrò nínú un gbogbo è̩s̩è̩ mi àti kúrò nínú un gbogbo ibi. Jé̩ kí ń máa jé̩ olótìtó̩ sí àwo̩n òfin Re̩ nígbà gbogbo. Má sì jé̩ kí n yapa kúrò ló̩dò̩ Re̩ láé. Àmín."
+            HorizontalTextAlignment="Justify"       FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Tàbí:" FontAttributes="None" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="Olúwa Jésù Krístì, má s̩e jé̩ kí gbígba Ara àti È̩jè̩ Re̩ mú mi wá sí ìdájó̩ àti ìdálé̩bi s̩ùgbó̩n nípa àánú Re̩ kí ó jé̩ orísun ìwòsàn àti àbò fún ara àti è̩mí mi." HorizontalTextAlignment="Justify" FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Àlùfáà yóò kúnlè̩ fún ìgbà ránpé̩, tó bá dìde yóò gbé Kàlísì àti Búré̩dì sókè bí ó ti ń wípé:" HorizontalTextAlignment="Justify" FontAttributes="None" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="E̩ wo ò̩dó̩ àgùtàn O̩ló̩run, E̩ wo E̩ni tí Ó ń kó è̩s̩è̩ ayé lo̩. Alábùkún-fún ni àwo̩n tí a pè sí ibi àsè ò̩dó̩ àgùntàn náà." HorizontalTextAlignment="Justify" FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Olúwa, èmi kò ye̩ kí Ìwo̩ wo̩ abé̩ orùlé mi s̩ùgbo̩n so̩ kìkì ò̩rò̩ nìkan A ó sì mú è̩mí mi lára dá." HorizontalTextAlignment="Justify" FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Komúníónì"
+            FontAttributes="Bold"
+            FontSize="20"
+            TextColor="Black"
+            Margin="100,10,0,0" />
+            <Label Text="Kí Ara Krístì pa mí mó̩ fún ìyè àìnípè̩kun." FontAttributes="None"  LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Kí È̩je̩ Krístì pa mí mó̩ fún ìyè àìnípè̩kun." FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="A óò wá síwájú láti gba Ara Olúwa. Alùfáà yóò wípé:" FontAttributes="None" HorizontalTextAlignment="Justify" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="Ara Krístì." FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Àmín." FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Tí a bá ń gba Ara àti E̩je̩ Olúwa papo̩, Àlùfáà yóò wípé:" FontAttributes="None" HorizontalTextAlignment="Justify" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="È̩je̩ Krístì." FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Àmín." FontAttributes="Bold" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="_________"
+            FontAttributes="Bold"
+            FontSize="20"
+            TextColor="Black"
+            Margin="120,10,0,0" />
+            <Label Text="Olúwa, jé̩ ká lè fi o̩kàn mímó̩ gba oúnje̩ ìyè tí a je̩ yìí pé kí è̩bùn ti a fún wa ní ayé yìí lè jé̩ ìwòsan wa fún ayérayé." HorizontalTextAlignment="Justify" FontAttributes="None" LineBreakMode="WordWrap" TextColor="Black"/>
+            <Label Text="Lé̩yìn gbígba Ara Olúwa, a óò wà ní ìdáké̩jé̩é̩ fún ìgbà díè̩ láti gbàdúrà nínú o̩kàn wa." FontAttributes="None" HorizontalTextAlignment="Justify" LineBreakMode="WordWrap" TextColor="Red"/>
+            <Label Text="_________"
+            FontAttributes="Bold"
+            FontSize="20"
+            TextColor="Black"
+            Margin="120,10,0,0" />
+            <!-- Closing -->
+            <Label Text="Ètò Ìparí Ìsìn"
+                   FontAttributes="None"
+                   FontSize="25"
+                   TextColor="Black"
+                   Margin="90,10,0,0" />
+            <Label Text="A lè s̩e ìkéde tó bá wà ní àsìkò yìí. Lé̩yìn èyí Àlùfáà yóò mú Ìsìn wá sí ìparí."
+      TextColor="Red" HorizontalTextAlignment="Justify" FontAttributes="Italic"
+       LineBreakMode="WordWrap" />
+            <Label Text="Ìbùkún"
+       FontAttributes="Bold"
+       FontSize="20"
+       TextColor="Black"
+       Margin="120,10,0,0" />
+            <Label Text="Àlùfáà:"
+                  TextColor="Red"
+                   LineBreakMode="WordWrap" />
+            <Label Text="Kí Olúwa wà pẹ̀lú yín." TextColor="Black"
+       FontAttributes="None"
+       LineBreakMode="WordWrap" />
+            <Label Text="Ijo:"
+           TextColor="Red"
+            LineBreakMode="WordWrap" />
+            <Label Text="Kí Ó sì wà pè̩lú è̩mí re̩." TextColor="Black"
+FontAttributes="Bold"
+LineBreakMode="WordWrap" />
+            <Label Text="Àlùfáà:"
+                  TextColor="Red"
+                   LineBreakMode="WordWrap" />
+            
+            <Label HorizontalTextAlignment="Justify" LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Kí O̩ló̩run Olódùmarè bùkún fún yín, Baba, ati O̩mo̩  " FontAttributes="None" TextColor="Black"/>
+                        <Span Text=" ✠" FontAttributes="Bold" TextColor="red"/>
+                        <Span Text="  àti È̩mí Mímó̩." FontAttributes="None" TextColor="Black"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="Ijo:"
+           TextColor="Red"
+            LineBreakMode="WordWrap" />
+            <Label Text="Àmín." TextColor="Black"
+FontAttributes="Bold"
+LineBreakMode="WordWrap" />
+            <Label Text="Ìpari ìsìn"
+FontAttributes="Bold"
+FontSize="20"
+TextColor="Black"
+Margin="110,0,0,0" />
+            <Label Text="A ti páríi Mísà, e̩ máa tè̩síwájú." TextColor="Black"
+FontAttributes="None"
+LineBreakMode="WordWrap" />
+            <Label Text="Tàbí: "
+TextColor="Red"
+ LineBreakMode="WordWrap" />
+            <Label Text="E̩ máa lo̩ kéde ìyìnrere Olúwa." TextColor="Black"
+FontAttributes="None"
+LineBreakMode="WordWrap" />
+            <Label Text="Tàbí: "
+TextColor="Red"
+ LineBreakMode="WordWrap" />
+            <Label Text="E̩ máa lo̩ lálàáfíà, kí e̩ sì máa yin Olúwa pè̩lú ìgbésí ayé yín." HorizontalTextAlignment="Justify" TextColor="Black"
+FontAttributes="None"
+LineBreakMode="WordWrap" />
+            <Label Text="Tàbí: "
+TextColor="Red"
+ LineBreakMode="WordWrap" />
+            <Label Text="E̩ máa lo̩ lálàáfíà." TextColor="Black"
+FontAttributes="None"
+LineBreakMode="WordWrap" />
+            <Label Text="Ijo:"
+           TextColor="Red"
+            LineBreakMode="WordWrap" />
+            <Label Text="O̩pé̩ ni fún O̩ló̩run." TextColor="Black"
+FontAttributes="Bold"
+LineBreakMode="WordWrap" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
